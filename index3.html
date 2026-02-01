@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Net</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,Arial}
+body{
+  height:100vh;
+  background:#000;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+/* PLAYER */
+.player{
+  width:100%;
+  max-width:420px;
+  padding:28px 22px 34px;
+  background:rgba(20,20,20,.9);
+  border-radius:22px;
+  box-shadow:0 30px 80px rgba(0,0,0,.7);
+  text-align:center;
+}
+
+/* TITLE */
+.title{
+  font-size:18px;
+  letter-spacing:2px;
+  opacity:.6;
+  margin-bottom:18px;
+}
+
+/* TEXT */
+.text{
+  font-size:18px;
+  line-height:1.65;
+  opacity:0;
+  transform:translateY(8px);
+  animation:fadeUp .8s ease forwards;
+}
+@keyframes fadeUp{
+  to{opacity:1;transform:none}
+}
+
+/* PROGRESS */
+.bar{
+  height:4px;
+  background:rgba(255,255,255,.15);
+  border-radius:4px;
+  overflow:hidden;
+  margin:26px 0 22px;
+}
+.bar span{
+  display:block;
+  height:100%;
+  width:0;
+  background:#fff;
+  animation:progress 18s linear forwards;
+}
+@keyframes progress{
+  to{width:100%}
+}
+
+/* BTN */
+button{
+  margin-top:22px;
+  padding:14px 26px;
+  border-radius:999px;
+  border:none;
+  background:#fff;
+  color:#000;
+  font-size:15px;
+  cursor:pointer;
+}
+
+/* SMALL */
+.small{
+  margin-top:14px;
+  font-size:12px;
+  opacity:.45;
+}
+</style>
+</head>
+
+<body>
+
+<div class="player">
+  <div class="title">NET</div>
+
+  <div class="text" id="text"></div>
+
+  <div class="bar"><span></span></div>
+
+  <button onclick="goWA()">Bunu bilmeni istedim</button>
+
+  <div class="small">Karar sende.</div>
+</div>
+
+<script>
+const lines=[
+  "Bundan sonra dikkat edeceğim.",
+  "Aynı hatayı tekrar yapmayacağım.",
+  "Kavga ederek değil, konuşarak ilerleyelim istiyorum.",
+  "Net olacağım.",
+  "Baskı kurmayacağım.",
+  "Söz vermekten çok, bunu davranışlarımla göstermek istiyorum."
+];
+
+const el=document.getElementById("text");
+let i=0;
+
+function typeLine(){
+  if(i>=lines.length) return;
+  el.innerHTML += lines[i++] + "<br><br>";
+  setTimeout(typeLine,2200);
+}
+typeLine();
+
+function goWA(){
+  window.open(
+    "https://wa.me/905387068334?text=Bunu%20bilmeni%20istedim.",
+    "_blank"
+  );
+}
+</script>
+
+</body>
+</html>
